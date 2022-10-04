@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <title>Form</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.1.0/modern-normalize.min.css">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <form class="form js-speaker-form" autocomplete="off">
+        <div class="close-form-btn">
+            <button class="button"></button>
+        </div>
+
+        <div class="sign-text">
+            <h1 class="form-title">Member Sign In</h1>
+            <p class="text">Not a member yet?
+                <a class="link" href="">Sign up now</a>
+            </p>
+        </div>
+
+        <div class="login-data">
+            <div class="form-field login-field">
+                <label class="login-icon label" for="login"></label>
+                <input class="input" type="text" name="login" id="login" autofocus placeholder="Username / Email">
+            </div>
+            <div class="form-field password-field">
+                <label class="password-icon label" for="password"></label>
+                <input class="password-input input" type="password" name="password" id="password"
+                    placeholder="Password">
+
+                <input class="checkbox" type="checkbox" onclick="showPassword()" name="toggle-pass-vision"
+                    id="toggle-pass-vision">
+                <label class="password-vision-icon" for="toggle-pass-vision" id="password-vision-icon"></label>
+            </div>
+        </div>
+
+        <div class="submit-group">
+            <button class="submit-btn button" type="submit">Sign in</button>
+            <div class="submit-options">
+                <div class="rememberMe-checkbox">
+                    <input class="checkbox" type="checkbox" name="save-login" id="save-login" checked>
+
+                    <label class="save-login" for="save-login">
+                        <span class="icon"></span>
+                        Remember me
+                    </label>
+                </div>
+                <a class="link" href="">Forgot password?</a>
+            </div>
+
+        </div>
+
+
+    </form>
+
+    <script>
+        function showPassword() {
+            var x = document.getElementById("password");
+            var icon = document.getElementById("password-vision-icon");
+            if (x.type === "password") {
+                x.type = "text";
+                icon.style.opacity = 0;
+            } else {
+                x.type = "password";
+                icon.style.opacity = 1;
+            }
+        }
+    </script>
+
+    <script>
+        (() => {
+            document
+                .querySelector('.js-speaker-form')
+                .addEventListener('submit', e => {
+                    e.preventDefault();
+
+                    new FormData(e.currentTarget).forEach((value, name) =>
+                        console.log(`${name}: ${value}`),
+                    );
+                });
+        })();
+    </script>
+</body>
+
+</html>
